@@ -1,0 +1,192 @@
+# Font for window titles.
+font "xft:tewi 7"
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# use Mouse+Mod4 to drag floating windows to their wanted position
+floating_modifier Mod4
+
+# start a terminal
+bindsym Mod4+Return exec --no-startup-id st
+bindsym Ctrl+Return exec --no-startup-id st
+
+# kill focused window
+bindsym Mod4+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym Mod4+d exec --no-startup-id dmenu_history
+bindsym Mod4+p exec --no-startup-id dmenu_history
+
+# change focus
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# move focused window
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod4+h split h
+
+# split in vertical orientation
+bindsym Mod4+v split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod4+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout toggle split
+
+# toggle tiling / floating
+bindsym Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod4+a focus parent
+
+# focus the child container
+# bindsym Mod4+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym Mod4+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym Mod4+minus scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+
+set $ws1 "1:I"
+set $ws2 "2:II"
+set $ws3 "3:III"
+set $ws4 "4:IV"
+set $ws5 "5:V"
+set $ws6 "6:VI"
+set $ws7 "7:VII"
+set $ws8 "8:VIII"
+set $ws9 "9:IX"
+
+# switch to workspace
+bindsym Mod4+1 workspace $ws1
+bindsym Mod4+2 workspace $ws2
+bindsym Mod4+3 workspace $ws3
+bindsym Mod4+4 workspace $ws4
+bindsym Mod4+5 workspace $ws5
+bindsym Mod4+6 workspace $ws6
+bindsym Mod4+7 workspace $ws7
+bindsym Mod4+8 workspace $ws8
+bindsym Mod4+9 workspace $ws9
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move container to workspace $ws1
+bindsym Mod4+Shift+2 move container to workspace $ws2
+bindsym Mod4+Shift+3 move container to workspace $ws3
+bindsym Mod4+Shift+4 move container to workspace $ws4
+bindsym Mod4+Shift+5 move container to workspace $ws5
+bindsym Mod4+Shift+6 move container to workspace $ws6
+bindsym Mod4+Shift+7 move container to workspace $ws7
+bindsym Mod4+Shift+8 move container to workspace $ws8
+bindsym Mod4+Shift+9 move container to workspace $ws9
+
+# reload the configuration file
+bindsym Mod4+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod4+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym Mod4+Shift+e exec "i3-nagbar -f 'xft:tewi 7' -t warning -m 'Do you really want to exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or Mod4+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym Mod4+r mode "default"
+}
+
+bindsym Mod4+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        colors {
+                background 		#282828
+                statusline 		#ebdbb2
+                separator  		#928374
+                active_workspace  	#928374 #1d2021 #ebdbb2
+                inactive_workspace 	#928374 #1d2021 #a89984
+                urgent_workspace   	#cc241d #fb4934 #ebdbb2
+        }
+	
+	height 				14
+	status_command 			i3status
+	mode 				dock
+        position 			top
+        tray_output 			LVDS
+        tray_padding 			1
+	font 				"xft:tewi 7"
+        workspace_buttons 		yes
+        separator_symbol 		"|"
+        strip_workspace_numbers 	yes
+        
+}
+
+
+# class                 		border  backgr. text    indicator child_border
+client.focused          		#d79921 #282828 #ebdbb2 #fabd2f   #d79921
+client.focused_inactive 		#928374 #282828 #ebdbb2 #fabd2f   #928372
+client.unfocused        		#928374 #504945 #bdae93 #fabd2f   #928372
+client.urgent           		#cc241d #282828 #fbf1c7 #fabd2f   #cc241d
+client.placeholder      		#000000 #282828 #ebdbb2 #000000   #d79921
+
+# ss
+bindsym Mod4+Ctrl+s exec --no-startup-id maim -u "/home/howoz/Pictures/Screenshot - $(date '+%Y-%m-%d-%I:%M:%S %p').png" && exec notify-send "Screenshot taken"
+bindsym Mod4+Shift+s exec --no-startup-id maim -su "/home/howoz/Pictures/Screenshot - $(date '+%Y-%m-%d-%I:%M:%S %p').png" && exec notify-send "Screenshot taken"
+
+# lock
+bindsym 0xff6a exec --no-startup-id sleep 0.1 && st -e screenlock
+
+# mpd controls
+bindsym Mod4+Shift+p exec --no-startup-id mpc toggle && pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo 0
+bindsym Mod4+Shift+n exec --no-startup-id mpc next
+bindsym Mod4+Shift+z exec --no-startup-id mpc prev
+
+workspace_auto_back_and_forth 		yes
+workspace_layout 			tabbed
+
+title_align 				center
+
+default_border 				pixel 2
+default_orientation 			auto
+
+exec --no-startup-id st -e rtorrent
+exec --no-startup-id st -e ncmpcpp
+exec --no-startup-id /usr/lib/lxpolkit/lxpolkit
+exec --no-startup-id redshift
+exec ripcord
+
+assign [title="ncmpcpp"] 	 	$ws2
+assign [title="rtorrent"] 		$ws3

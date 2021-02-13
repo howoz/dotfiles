@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# rice
+xrdb ~/.config/X11/Xresources
+feh --bg-fill ~/Documents/Walls/forest_road.jpg --no-fehbg
+
+# auto screen lock
+xss-lock -- screenlock &
+
+# pulse
+start-pulseaudio-x11 &
+
+# wm
+exec i3

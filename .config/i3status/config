@@ -1,0 +1,56 @@
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 1
+	color_good = "#b8bb26"
+	color_degraded = "#fabd2f"
+	color_bad = "#fb4934"
+}
+
+order += "memory"
+order += "cpu_usage"
+order += "battery 1"
+order += "wireless wlan0"
+order += "volume master"
+order += "time"
+
+memory {
+        format = " %used/%total"
+        threshold_degraded = 25%
+	threshold_critical = 15%
+        format_degraded = " %available"
+}
+
+cpu_usage {
+	format = " %usage"
+	degraded_threshold = 70
+	max_threshold = 90
+}
+
+battery 1 {
+	format = "%status %percentage"
+	format_down = " no battery"
+	integer_battery_capacity = true
+        status_chr = ""
+        status_unk = ""
+        status_bat = ""
+        status_full = ""
+        path = "/sys/class/power_supply/C%dBE/uevent"
+        threshold_type = percentage
+	low_threshold = 30
+}
+
+wireless wlan0 {
+        format_up = " %ip"
+        format_down = ""
+}
+
+volume master {
+	format = " %volume"
+	format_muted = ""
+	device = "pulse"
+}
+
+time {
+        format = "%a %d/%m/%Y - %X"
+}

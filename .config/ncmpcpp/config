@@ -1,0 +1,48 @@
+# MPD Settings .. 
+mpd_crossfade_time = "3"
+mpd_music_dir = "~/Music"
+
+# Display ..
+song_list_format = " {$3%a$2 -- $8}{%t} "
+song_status_format = " $3%a $2• $8%t $3• $2%b$1 "
+playlist_display_mode = "classic"
+
+# Now Playing ..
+now_playing_prefix = "$5#"
+now_playing_suffix = "$8$/b"
+
+# Playlist ..
+browser_playlist_prefix = "$2 ♥ $0 "
+
+# Delays .. 
+playlist_disable_highlight_delay = "1"
+message_delay_time= "1"
+
+# Progress Bar ..
+progressbar_look = "─╼-"
+progressbar_color = "red"
+progressbar_elapsed_color = "blue"
+
+# Colors ..
+colors_enabled = "yes"
+empty_tag_color = "red"
+statusbar_color = "white"
+state_line_color = "white"
+state_flags_color = "green"
+main_window_color = "green"
+header_window_color = "white"
+
+# Misc ..   
+lyrics_directory = ""
+display_bitrate = "yes"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+titles_visibility = "no"
+statusbar_visibility = "yes"
+empty_tag_marker=" -- ‼ -- " 
+mouse_support = "no"
+header_visibility = "no"
+display_remaining_time = "no"
+ask_before_clearing_playlists = "no"
+discard_colors_if_item_is_selected = "yes"
+allow_for_physical_item_deletion = "yes"
