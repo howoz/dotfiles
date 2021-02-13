@@ -14,6 +14,7 @@
 - lxappearance
 - weechat
 - zsh
+- zimfw (zsh framework)
 - mpd
 - ncmpcpp
 - bat (for ranger file preview)
