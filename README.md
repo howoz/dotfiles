@@ -10,6 +10,7 @@
 - dmenu
 - slock
 - sxiv
+- xss-lock
 - qt5ct
 - lxappearance
 - weechat
